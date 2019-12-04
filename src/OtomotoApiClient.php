@@ -43,5 +43,11 @@ class OtomotoApiClient extends OtomotoApiConnect implements OtomotoApi
     {
         $this->connect('account/adverts/' . $id . '/activate', 'POST');
     }
+
+    public function getCitiesList($page=1)
+    {
+        return $this->connect('cities?page=' . $page);
+    }
+
 }
 

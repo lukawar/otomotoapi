@@ -13,4 +13,5 @@ interface OtomotoApi
     public function getUserAdver($id);
     public function createAdvert();
     public function activateAdvert($id);
+    public function getCitiesList($page);
 }
