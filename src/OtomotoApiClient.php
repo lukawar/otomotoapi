@@ -2,28 +2,46 @@
 
 namespace OtomotoApi\Client;
 
-class OtomotoApiClient implements OtomotoApi
+class OtomotoApiClient extends OtomotoApiConnect implements OtomotoApi
 {
-    private $path_dev = 'https://sbotomotopl.playground.lisbontechhub.com/api/open/';   //playground
-    private $path_prod = 'https://otomoto.pl/api/open/';   //prod version
-
-    public $config;
-    public $path;
-
-    public function __construct($config, $type)
+    public function getDataWithParameter($optionPath, $option=null)  // cities, locations etc
     {
-        $this->config = $config;
-
-        $path = ['dev' => $this->path_dev, 'prod' => $this->path];
-        $this->path = $path[$type];
-
-        return true;
+        if(!is_null($option))
+            $option = '/'.$option;
+        return $this->connect($optionPath . $option);
     }
 
-    public function prepare()//: OtomotoApi
+    public function getCategory($option=null)
     {
-        var_dump($this->path);
-        var_dump($this->config);
+        if(!is_null($option))
+            $option = '/'.$option;
+        return $this->connect('categories' . $option);
+    }
+
+    public function getVersions($category, $brand, $model)
+    {
+        return json_decode($this->connect(sprintf('/categories/%s/models/%s/versions/%s', $category, $brand, $model)), true);
+    }
+
+    public function getUserAdversList()
+    {
+        return $this->connect('account/adverts/');
+    }
+
+    public function getUserAdver($id)
+    {
+        return $this->connect('account/adverts/' . $id);
+    }
+
+    public function createAdvert()
+    {
+        $result = $this->connect('account/adverts', 'POST');
+        return json_decode($result, true);
+    }
+
+    public function activateAdvert($id)
+    {
+        $this->connect('account/adverts/' . $id . '/activate', 'POST');
     }
 }
 

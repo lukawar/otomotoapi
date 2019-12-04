@@ -1,6 +1,6 @@
 {
     "name": "lukawar/otomotoapi",
-    "description": "Simple code for Otomoto APi",
+    "description": "Simple code for Otomoto Api",
     "license": "Apache-2.0",
     "version": "1.0.0",
     "type": "symfony-bundle",
