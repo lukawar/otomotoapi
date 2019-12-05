@@ -13,13 +13,7 @@ class OtomotoApiConnect
 
     public function __construct($config, $type)
     {
-        $configData = new \stdClass();
-        $configData->key = $config[0];
-        $configData->idKey = $config[1];
-        $configData->login = $config[2];
-        $configData->pass = $config[3];
-
-        $this->config = $configData;
+        $this->config = (object)$config;
 
         $path = ['dev' => $this->path_dev, 'prod' => $this->path_prod];
         $this->path = $path[$type];
