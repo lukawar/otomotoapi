@@ -33,20 +33,20 @@ class OtomotoApiClient extends OtomotoApiConnect implements OtomotoApi
         return $this->connect('account/adverts/' . $id);
     }
 
-    public function createAdvert()
-    {
-        $result = $this->connect('account/adverts', 'POST');
-        return json_decode($result, true);
-    }
-
-    public function activateAdvert($id)
-    {
-        $this->connect('account/adverts/' . $id . '/activate', 'POST');
-    }
-
     public function getCitiesList($page=1)
     {
         return $this->connect('cities?page=' . $page);
+    }
+
+    public function createAdvert($data)
+    {
+        $this->parameters = $data;
+        return $result = $this->connect('account/adverts', 'POST');
+    }
+
+    public function setActiveAdvert($id)
+    {
+        return $this->connect('account/adverts/' . $id . '/activate', 'POST');
     }
 
     public function setImageCollection($images)
@@ -58,7 +58,6 @@ class OtomotoApiClient extends OtomotoApiConnect implements OtomotoApi
 
         return false;
     }
-
 
 }
 
