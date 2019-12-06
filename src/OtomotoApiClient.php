@@ -49,5 +49,16 @@ class OtomotoApiClient extends OtomotoApiConnect implements OtomotoApi
         return $this->connect('cities?page=' . $page);
     }
 
+    public function setImageCollection($images)
+    {
+        if(is_array($images)) {
+            $this->parameters = json_encode($images, true);
+            return $this->connect('/imageCollections');
+        }
+
+        return false;
+    }
+
+
 }
 
