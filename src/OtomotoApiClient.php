@@ -53,7 +53,7 @@ class OtomotoApiClient extends OtomotoApiConnect implements OtomotoApi
     {
         if(is_array($images)) {
             $this->parameters = json_encode($images, true);
-            return $this->connect('/imageCollections');
+            return $this->connect('imageCollections', 'POST');
         }
 
         return false;
