@@ -9,6 +9,7 @@ class OtomotoApiConnect
 
     public $config;
     public $path;
+    public $token;
     public $parameters = null;
 
     public function __construct($config, $type)
@@ -17,13 +18,12 @@ class OtomotoApiConnect
 
         $path = ['dev' => $this->path_dev, 'prod' => $this->path_prod];
         $this->path = $path[$type];
-
+        $this->token = $this->getToken();
         return true;
     }
 
     public function connect($option, $type='GET')
     {
-        $token = $this->getToken();
         $path = $this->path . $option;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $path);
@@ -40,7 +40,7 @@ class OtomotoApiConnect
         $headers = array();
         $headers[] = 'Accept: application/json';
         $headers[] = 'Content-Type: application/json';
-        $headers[] = 'Authorization: Bearer ' . $token;
+        $headers[] = 'Authorization: Bearer ' . $this->token;
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
         $result = curl_exec($ch);
