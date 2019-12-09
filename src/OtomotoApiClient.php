@@ -20,7 +20,7 @@ class OtomotoApiClient extends OtomotoApiConnect implements OtomotoApi
 
     public function getVersions($category, $brand, $model)
     {
-        return json_decode($this->connect(sprintf('/categories/%s/models/%s/versions/%s', $category, $brand, $model)), true);
+        return json_decode($this->connect(sprintf('categories/%s/models/%s/versions/%s', $category, $brand, $model)), true);
     }
 
     public function getUserAdversList()

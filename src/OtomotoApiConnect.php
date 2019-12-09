@@ -10,6 +10,7 @@ class OtomotoApiConnect
     public $config;
     public $path;
     public $token;
+    public $option;
     public $parameters = null;
 
     public function __construct($config, $type)
@@ -25,6 +26,7 @@ class OtomotoApiConnect
     public function connect($option, $type='GET')
     {
         $path = $this->path . $option;
+        $this->option = $path;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $path);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -74,6 +76,11 @@ class OtomotoApiConnect
 
         $array = json_decode($result, true);
         return $array['access_token'];
+    }
+
+    public function getLastUsed()
+    {
+        return $this->option;
     }
 
 }
