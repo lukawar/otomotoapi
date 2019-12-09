@@ -2,7 +2,7 @@
     "name": "lukawar/otomotoapi",
     "description": "Simple code for Otomoto Api",
     "license": "Apache-2.0",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "type": "symfony-bundle",
     "authors": [
         {
@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "php": "^7.0",
+        "php": "*",
         "symfony/framework-bundle": "^4.2.12",
         "symfony/http-foundation": "^4.0.15",
         "guzzlehttp/guzzle": "^6",
