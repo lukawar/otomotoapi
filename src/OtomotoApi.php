@@ -9,6 +9,7 @@ interface OtomotoApi
     public function getDataWithParameter($optionPath, $option);
     public function getCategory($option);
     public function getVersions($category, $brand, $model);
+    public function getEngineCodes($category, $brand, $model);
     public function getUserAdversList();
     public function getUserAdver($id);
     public function createAdvert($data);
