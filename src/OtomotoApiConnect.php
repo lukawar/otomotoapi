@@ -4,6 +4,7 @@ namespace OtomotoApi\Client;
 
 class OtomotoApiConnect
 {
+
     private $path_dev = 'https://sbotomotopl.playground.lisbontechhub.com/api/open/';   //playground
     private $path_prod = 'https://www.otomoto.pl/api/open/';   //prod version
 
@@ -55,6 +56,7 @@ class OtomotoApiConnect
     }
 
     public function getToken() {
+
         $path = $this->path . 'oauth/token';
         $ch = curl_init();
 
