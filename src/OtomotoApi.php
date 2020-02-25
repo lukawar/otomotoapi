@@ -4,7 +4,7 @@ namespace OtomotoApi\Client;
 
 interface OtomotoApi
 {
-    const VERSION = '1.0.1';
+    const VERSION = '1.1.1';
 
     public function getDataWithParameter($optionPath, $option);
     public function getCategory($option);
