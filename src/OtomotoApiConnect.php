@@ -21,7 +21,7 @@ class OtomotoApiConnect
         $path = ['dev' => $this->path_dev, 'prod' => $this->path_prod];
         $this->path = $path[$type];
         $this->token = $this->getToken();
-        return true;
+        return $this->token;
     }
 
     public function connect($option, $type='GET')
@@ -72,7 +72,8 @@ class OtomotoApiConnect
 
         $result = curl_exec($ch);
         if (curl_errno($ch)) {
-            die('Error:' . curl_error($ch));
+            //die('Error:' . curl_error($ch));
+            return false;
         }
         curl_close($ch);
 
