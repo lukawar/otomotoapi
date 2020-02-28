@@ -78,7 +78,10 @@ class OtomotoApiConnect
         curl_close($ch);
 
         $array = json_decode($result, true);
-        return $array['access_token'];
+        if(isset($array['access_token']) and !is_null($array['access_token']))
+            return $array['access_token'];
+
+        return null;
     }
 
     public function getLastUsed()
