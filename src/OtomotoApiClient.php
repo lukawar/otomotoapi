@@ -49,9 +49,20 @@ class OtomotoApiClient extends OtomotoApiConnect implements OtomotoApi
         return $result = $this->connect('account/adverts', 'POST');
     }
 
+    public function updateAdvert($id, $data)
+    {
+        $this->parameters = $data;
+        return $result = $this->connect('account/adverts/' . $id, 'PUT');
+    }
+
     public function setActiveAdvert($id)
     {
         return $this->connect('account/adverts/' . $id . '/activate', 'POST');
+    }
+
+    public function setInactiveAdvert($id)
+    {
+        return $this->connect('account/adverts/' . $id . '/deactivate', 'POST');
     }
 
     public function setImageCollection($images)

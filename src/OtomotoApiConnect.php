@@ -34,9 +34,8 @@ class OtomotoApiConnect
         if($type=='POST')
             curl_setopt($ch, CURLOPT_POST, 1);
         else
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $type);
         if(!is_null($this->parameters)) {
-            //die(var_dump($this->parameters));
             curl_setopt($ch, CURLOPT_POSTFIELDS, $this->parameters);
         }
 
